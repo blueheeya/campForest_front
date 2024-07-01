@@ -1,19 +1,39 @@
 @charset "utf-8";
-@import '../fonts/fonts.css';
-* {margin:0; box-sizing: border-box;}
-html, body {width: 100%;height: 100%; color: #535353;}
-
+@import "../fonts/fonts.css";
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css");
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+html,
+body {
+    width: 100%;
+    height: 100%;
+    color: #535353;
+    font-family: "Pretendard";
+}
+ul,
+li {
+    list-style: none;
+}
+a,
+a:link {
+    text-decoration: none;
+}
 /* colors */
-$PrimaryColor : #3F71D1;
+$PrimaryColor: #3f71d1;
+$textTitle: #2a2a2a;
+$textDefault: #535353;
+$textSecondary: #989898;
 /* layout */
 section.backWrap {
-    position: absolute;
     width: 100%;
     height: 100vh;
     background: url(../images/background.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    overflow-y: hidden;
     .wrap {
         display: flex;
         justify-content: right;
@@ -24,15 +44,20 @@ section.backWrap {
     .contentWrap {
         width: 530px;
         height: 100vh;
-        overflow-x: hidden;
-        overflow-y: auto;
-        scroll-snap-type: y mandatory;
-        margin-right: 32px;
-        background: #ffffff;
+        background: hsl(0, 0%, 100%);
         box-shadow: 0 4px 4px 0 rgba($color: #000000, $alpha: 0.15);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
-    .contentWrap > .item {
-        scroll-snap-align: start;
+    .contentWrap::-webkit-scrollbar {
+        width: 5px;
+    }
+    .contentWrap::-webkit-scrollbar-track {
+        background: #ffffff;
+    }
+    .contentWrap::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: $PrimaryColor;
     }
 }
 
@@ -40,15 +65,15 @@ section.backWrap {
 header.headerType1 {
     width: 100%;
     height: 64px;
-        display: flex;
-        align-items: center;
-        width: 100%;
-        height: 64px;
-        padding: 0 32px;
-        img {
-            width: 55px;
-            height: 44px;
-        }
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 64px;
+    padding: 0 32px;
+    img {
+        width: 55px;
+        height: 44px;
+    }
 }
 header.headerType2 {
     position: fixed;
@@ -61,10 +86,10 @@ header.headerType2 {
     h2 {
         flex: auto;
         margin-left: -36px;
+        color: $PrimaryColor;
+        font-family: "EunhasuR";
         font-size: 30px;
         text-align: center;
-        font-family: 'EunhasuR';
-        color: $PrimaryColor;
     }
     h2.storeH2 {
         margin-left: -60px;
@@ -72,4 +97,12 @@ header.headerType2 {
     .btnWrap {
         flex: none;
     }
+}
+/* menu */
+.menuWrap {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    width: 530px;
+    bottom: 0;
 }
